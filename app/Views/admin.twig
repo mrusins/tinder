@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Tinder User</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {box-sizing: border-box}
+        .mySlides1, .mySlides2 {display: none}
+        img {vertical-align: middle;}
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a grey background color */
+        .prev:hover, .next:hover {
+            background-color: #f1f1f1;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div>
+
+    <form class="ml-4 text-green-500 float-right" action="/" method="POST" >
+        <input type="hidden" name="logout">
+        <button type="submit" >LOG OUT</button>
+    </form>
+    <br>
+
+</div>
+<div class="bg-red-400 flex  ">
+
+    <div class="flex-1 pl-4 py-4 ">
+        <h2 class="text-left">Hi, {{ username }}</h2>
+    </div>
+    <div class="flex-none text-center bg-red-400 py-4 ">
+        TINDERUNDERPANTS
+    </div>
+
+    <div class="flex-1 pr-4 py-4 ">
+        <h2 class="text-right">
+            <a href="/user">main</a>
+        </h2>
+    </div>
+</div>
+
+
+{% if picture == false %}
+    <div class="text-center bg-red-500 max-w-md mx-auto">
+        <p class="text-white text-lg bold flex-1">Picture size is too big.</p>
+
+    </div>
+
+
+{% endif %}
+
+
+
+<br>
+<div class="slideshow-container" style="width:50%">
+
+
+    {% for pic in pics %}
+        <div class="mySlides1">
+            <img  src="../../pictures/{{ pic }}" style="width:100%"/>
+        </div>
+    {% endfor %}
+
+    <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+</div>
+
+<div class=" grid justify-items-center">
+    <form  class="pl-4" action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit" name="upload">UPLOAD</button>
+    </form>
+</div>
+
+
+<script>
+    var slideIndex = [1,1];
+    var slideId = ["mySlides1", "mySlides2"]
+    showSlides(1, 0);
+    showSlides(1, 1);
+
+    function plusSlides(n, no) {
+        showSlides(slideIndex[no] += n, no);
+    }
+
+    function showSlides(n, no) {
+        var i;
+        var x = document.getElementsByClassName(slideId[no]);
+        if (n > x.length) {slideIndex[no] = 1}
+        if (n < 1) {slideIndex[no] = x.length}
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex[no]-1].style.display = "block";
+    }
+</script>
+
+</body>
+</html>

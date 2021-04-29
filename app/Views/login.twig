@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Tinder LogIn</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+</head>
+<body>
+
+
+
+<div>
+    <h1 class="text-3xl text-indigo-500 text-center "><br>Welcome to <br> TINDERUNDERPANTS</h1>
+</div>
+
+<form method="post" target="/">
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+    <div class="mb-4">
+        <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
+            Username
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="username" name="authorize" type="text" placeholder="Username">
+    </div>
+    <div class="mb-6">
+        <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
+            Password
+        </label>
+        <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" name="password" type="password" placeholder="******************">
+        <p class="text-red text-xs italic">
+            {% if error == false %}
+                <p class="text-red-500 text-xs italic">Wrong username or password.</p>
+                {% else %}
+                    Enter username and password.
+            {% endif %}
+
+
+        </p>
+    </div>
+    <div class="flex items-center justify-between">
+
+            <button class="bg-blue hover:bg-blue-dark text-blue font-bold py-2 px-4 rounded" type="submit">
+                Sign In
+            </button>
+
+
+        <a class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="#">
+            Forgot Password?
+        </a>
+    </div>
+</div>
+</form>
+
+
+</body>
+</html>
